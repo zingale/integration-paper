@@ -1,0 +1,44 @@
+* Jacobian sparsity
+
+  There are 3 issues that make the Jacobian non-sparse:
+
+  * Weak rate contributions via Ye
+  * Screening plasma state contributions via Z^2 and Ye
+  * evolving e instead of T, and the coupling at constant e
+
+  Literature:
+
+  * WinNet says that they ignore the screening composition dependence
+    https://ui.adsabs.harvard.edu/abs/2012MNRAS.424.2222P/abstract
+
+    "Furthermore, derivatives of the screening correction factor
+     (Section 2.5) are considered to be zero" (p. 10)
+
+  * Pakmor et al. 2012 (https://ui.adsabs.harvard.edu/abs/2012MNRAS.424.2222P/abstract)
+    evolve Σ Zᵢ² Yᵢ explicitly, decoupling it from the species derives
+    to make things sparse again
+
+  Can we do something similar to Pakmor et al. for e and T?
+
+* discuss integrators
+
+  * Rosenbrock vs VODE -- Jacobian matters
+
+    * YASS is a first-order version of Rosenbrock
+
+* GPU vs. CPU
+
+  * look at different integrators on test_react
+
+  * explore reduced precision
+
+    * in Jacobian
+    * in weak rate interpolation
+
+* Real world problems
+
+  * deflagration
+  * detonation
+  * discuss cap on number of steps + retry at burner level
+  * look at number of RHS evals. vs time.
+
