@@ -20,6 +20,9 @@
 
   Can we do something similar to Pakmor et al. for e and T?
 
+  * We can derive an [A(T)]^{n+1/2} after the advective update
+    from e^{n+1}
+
 * discuss integrators
 
   * Rosenbrock vs VODE -- Jacobian matters
