@@ -45,3 +45,22 @@
   * discuss cap on number of steps + retry at burner level
   * look at number of RHS evals. vs time.
 
+
+Past net comparisons:
+
+* Integration of Nuclear Reaction Networks for Stellar Hydrodynamics
+  F. X. Timmes, 1999
+  https://ui.adsabs.harvard.edu/abs/1999ApJS..124..241T/abstract
+
+* Performance improvements for nuclear reaction network integration
+  Longland et al., 2014
+  https://ui.adsabs.harvard.edu/abs/2014A%26A...563A..67L/abstract
+
+* Something about the QSS methods
+
+* Hix paper saying that they don't iterate
+
+* YASS paper
+
+* MESA paper (Burlish-Stoer)
+
