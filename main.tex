@@ -1,0 +1,180 @@
+% oja_template.tex
+% Unofficial LaTeX template for publishing 
+% in the Open Journal of Astrophysics
+% v1.0 released September 6, 2015 (matches openjournal.cls)
+% Author: Emmanuel Frion
+
+% Basic setup
+\documentclass[twocolumn,apj,numberedappendix]{openjournal}
+% Available options:
+% [twocolumn] - two-column mode
+% [onecolumn] - (default) main text in one-column mode
+% [apj]       - typeset in the style of ApJ.
+% [apjl]      - (default) typeset in the style of ApJ Letters 
+% [tighten]   - some adjustments to approximate grid typesetting
+% [numberedappendix]   - number appendix sections as A, B, etc
+% [appendixfloats]  - use separate numbering for floats within appendix
+% [twocolappendix]  - make appendix in two-col mode in a two-col paper
+% [revtex4]   - force using revtex4 (rather than 4-1)
+
+% In case of issues with doi formatting, uncomment these lines
+% \let\olddoi\doi
+% \renewcommand{\doi}[1]{\href{https://doi.org/#1}{DOI: \nolinkurl{#1}}}
+
+% Optional useful packages
+\usepackage[dvipsnames]{xcolor}
+% \usepackage{textgreek}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{listings}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\definecolor{cosmiclatte}{rgb}{1.0, 0.97, 0.91}
+\lstset{language=Python,
+        basicstyle=\footnotesize\ttfamily,
+        showspaces=false,
+        showstringspaces=false,
+        tabsize=2,
+        breaklines=false,
+        breakatwhitespace=true,
+        backgroundcolor = \color{cosmiclatte},
+        identifierstyle=\ttfamily,
+        keywordstyle=\bfseries\color[rgb]{0.133,0.545,0.133},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        frame=single
+    }   
+    
+\usepackage{hyperref}
+\hypersetup{
+    unicode, 
+    colorlinks=true,
+    linkcolor=linkcolor,
+    citecolor=linkcolor,
+    filecolor=linkcolor,
+    urlcolor=linkcolor,
+}
+\usepackage{color,colortbl}
+\definecolor{linkcolor}{rgb}{0.0,0.3,0.5}
+\DeclareGraphicsExtensions{.bmp,.png,.jpg,.pdf}
+\usepackage{orcidlink}
+
+\usepackage{savesym}
+\savesymbol{tablenum}
+\usepackage{siunitx}
+\restoresymbol{SIX}{tablenum}
+\usepackage{float}
+\usepackage{marginnote}
+\usepackage{tabularray}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{tikz}
+
+% this should be loaded last
+\usepackage{microtype}
+
+\UseTblrLibrary{booktabs}
+\usetikzlibrary{calc}
+
+\urlstyle{same}
+
+\sisetup{mode=match, per-mode=symbol, uncertainty-mode=separate}
+\DeclareSIUnit{\erg}{erg}
+
+\input{newcommands.inc}
+
+\floatplacement{figure}{tp}
+\floatplacement{table}{tp}
+
+\journalinfo{The Open Journal of Astrophysics}
+
+\begin{document}
+
+\title{Nuclear Reaction Integration on GPUs}
+
+\author{Michael Zingale$^1$\orcidlink{0000-0001-8401-030X}}
+
+\affiliation{$^1$Department of Physics and Astronomy,
+             Stony Brook University,
+             Stony Brook, NY 11794-3800, USA}
+
+
+\begin{abstract}
+We discuss the challenges on performing nuclear reaction integration
+on GPUs, considering different integrators, precision, and applications.
+\end{abstract}
+
+\begin{keywords}
+    {nucleosynthesis}
+\end{keywords}
+
+\maketitle
+
+
+\section{Introduction}
+
+% introduction
+
+Discuss previous integration studies
+
+New challenges posed by GPUs: vectorization / branching, register
+pressure, trend toward reduced precision.
+
+\section{Integrators}
+
+
+Backward-Euler and BDF / VODE
+
+Rosenbrock (YASS is a special case)
+
+Jacobian structure / sparsity
+
+Jacobian matters more with Rosenbrock.
+
+
+\section{Tests}
+
+\subsection{One-zone burn}
+
+\subsection{Reduced precision}
+
+\subsection{Flame}
+
+\subsection{Detonation}
+
+look at number of RHS evals vs. time
+
+\subsection{Double-detonation SN Ia}
+
+
+\section{Summary and Future Directions}
+
+
+
+\begin{acknowledgments}
+The work at Stony Brook was supported by
+DOE/Office of Nuclear Physics grant DE-FG02-87ER40317.
+\end{acknowledgments}
+
+\software{AMReX \citep{amrex,amrex-gpu},
+          AMReX-Astro Microphysics \citep{Microphysics,microphysics-joss},
+          autodiff \citep{autodiff},
+          Jupyter \citep{jupyter},
+          matplotlib \citep{Hunter:2007},
+          NetworkX \citep{networkx},
+          numba \citep{numba},
+          numpy \citep{numpy,numpy2020},
+          pynucastro \citep{pynucastro,pynucastro2},
+          pytest \citep{pytest},
+          SciPy \citep{scipy},
+          SymPy \citep{sympy},
+          VODE \citep{vode},
+          yt \citep{yt}}
+
+\bibliographystyle{aasjournal}
+
+\bibliography{refs}
+
+\end{document}
